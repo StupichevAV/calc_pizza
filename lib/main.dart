@@ -7,7 +7,7 @@ import 'reg_screen.dart';
 
 void main() {
   // Форма "Авторизации"
-  runApp(AuthScreen());
+  //runApp(AuthScreen());
 
   // Форма "Регистрации"
   //runApp(RegScreen());
@@ -16,7 +16,7 @@ void main() {
   //runApp(const PizzaCalculatorScreen());
 
   // Форма AppBar, Кнопки
-  //runApp(const AppBarScreen());
+  runApp(const AppBarScreen());
 
   // Форма "DrawerHeader"
   //runApp(const NavigationDrawerScreen());

@@ -34,7 +34,7 @@ class _AppBarScreenState extends State<AppBarScreen> {
             ),
           ],
         ),
-        body: Center(child: Text('Контент')),
+        body: const Center(child: Text('Контент')),
       ),
     );
   }
