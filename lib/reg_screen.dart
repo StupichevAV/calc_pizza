@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -13,33 +13,65 @@ class RegScreen extends StatelessWidget {
     const borderStyle = OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(36)),
         borderSide: BorderSide(
-            color: const Color(0xFFeceff1), width: 2));
-    const linkTextStyle = TextStyle(
-      fontSize: 16,
-      // fontWeight: FontWeight.bold,
-      color: Color(0xFF0079D0),
+            color: Color(0xFFeceff1), width: 2)
     );
 
+    const commentStyle = TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: Color(0xFFC4C4C4));
+
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Roboto'),
       home: Scaffold(
           body: Container(
             width: double.infinity,
             height: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 38),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SingleChildScrollView(
-              child: Column(children:  [
-                const SizedBox(height: 150,),
-             //   const SizedBox(width: 110, height: 84,
-              //    child: Image(image: AssetImage('assets/dart-logo.png'),),),
-                const SizedBox(height: 20,),
-                const SizedBox(height: 42, width: 300,
-                  child: Text('Регистрация',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16,
-                        color: Color.fromRGBO(0, 0, 0, 0.6)),
+              child: Column(children: [
+                const SizedBox(height: 62,),
+                SizedBox(height: 42, width: 300,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(right: 9),
+                        child: Icon(Icons.people),
+                      ),
+                      Text('Регистрация',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                           fontFamily: "Nunito",
+                            fontSize: 20,
+                           //fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w800,
+                            color: Color(0xFF5C5C5C)),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(height: 5),
+
+                Container(
+                   // width: 300,
+                    height: 0,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(width: 1.0, color: Color(0xFFC4C4C4)),
+                      )
+                    ),
+
+                ),
+                const SizedBox(height: 10),
+                const SizedBox(width: 300, height: 38,
+                  child: Text('Чтобы зарегистрироваться введите свой номер телефона и почту',
+                    textAlign: TextAlign.center,
+                    style: commentStyle,
+                  ),
+                ),
+                const SizedBox(height: 24,),
                 SizedBox(height: 42, width: 244,
                   child: TextField(
                     keyboardType: TextInputType.number,
@@ -56,39 +88,52 @@ class RegScreen extends StatelessWidget {
                     inputFormatters: [maskFormatter],
                   ),
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(height: 24,),
                 const SizedBox(height: 42, width: 244,
                   child: TextField(
-                    obscureText: true ,
                     textAlignVertical: TextAlignVertical.top,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFeceff1),
                       enabledBorder: borderStyle,
                       focusedBorder: borderStyle,
-                      labelText: 'Пароль',
+                      labelText: 'Почта',
                     ),
                   ),
                 ),
-                const SizedBox(height: 28,),
+                const SizedBox(height: 24),
+                const SizedBox(width: 300, height: 38,
+                  child: Text('Вам придет четырехзначный код, который будет вашим паролем',
+                    textAlign: TextAlign.center,
+                    style: commentStyle,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                const SizedBox(width: 252, height: 57,
+                  child: Text('Изменить пароль можно будет в личном кабинете после регистрации',
+                    textAlign: TextAlign.center,
+                    style: commentStyle,
+                  ),
+                ),
+
+                const SizedBox(height: 32,),
                 SizedBox(width: 154, height: 42,
                     child: ElevatedButton(onPressed: () {},
-                      child: Text('Войти'),
+                      child: const Text('Отправить код',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                      ),
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF0079D0),
+                        primary: const Color(0xFF0079D0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(36.0),
                         ),
                       ),
                     )
                 ),
-                SizedBox(height: 32,),
-                InkWell(child: const Text('Регистрация', style: linkTextStyle,),
-                    onTap: () {}),
-                SizedBox(height: 20,),
-                InkWell(child: const Text('Забыли пароль?', style: linkTextStyle,),
-                    onTap: () {}),
-                const SizedBox(height: 30,),
+                const SizedBox(height: 32,),
+
               ],),
             ),
           )

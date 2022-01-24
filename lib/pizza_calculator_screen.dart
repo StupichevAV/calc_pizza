@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/src/material/theme_data.dart';
+//import 'package:flutter/cupertino.dart';
+import 'package:flutter/src/material/theme_data.dart';
 import 'package:sliding_switch/sliding_switch.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +20,8 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
   int _cost = 100;
   Sauce? _sauce = Sauce.hot;
   bool _addCheese = true;
+  // Стиль текста "Размер", "Соус" и "Стоимость"
+  var styleLabel = const TextStyle(fontSize: 18, color: Color(0xFF000000));
 
   int _calcCost() {
     _cost = _pizzaSize.round() + 100;
@@ -55,30 +58,113 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        /*
         appBar: AppBar(
-          title: const Text('Home'),
+          title: const Text('Калькулятор пиццы'),
+            /*
+            actions: <Widget>[
+              IconButton(
+                  onPressed: (){},
+                  icon: const Icon(Icons.settings)
+              ),
+            ],
+          */
         ),
-         */
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Container(
+                    height: 200,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 100,
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(50.0))
+                          ),
+                          child: Image.asset('assets/images/pizza.png')
+                          //child: Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/220px-Google-flutter-logo.svg.png"),
+
+                        ),
+                        const Text("Калькулятор пиццы",
+                            style: TextStyle(fontSize: 20, color: Colors.white)),
+                      ],
+                    ),
+                  )),
+              ListTile(
+                leading: const Icon(Icons.folder),
+                title: const Text('Каталог'),
+                onTap: () {
+                  /*
+                  _messengerKey.currentState!.showSnackBar(
+                      const SnackBar(content: Text('Переход в Каталог')));
+                  */
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.favorite),
+                title: const Text('Избранное'),
+                onTap: () {
+                  /*
+                  _messengerKey.currentState!.showSnackBar(
+                      const SnackBar(content: Text('Переход в Избранное')));
+                  */
+                },
+              ),
+
+              ListTile(
+                leading: const Icon(Icons.shopping_bag),
+                title: const Text('Корзина'),
+                onTap: () {
+                  /*
+                  _messengerKey.currentState!.showSnackBar(
+                      const SnackBar(content: Text('Переход в Корзину')));
+                  */
+                },
+              ),
+              const Divider(),
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text('Профиль'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text('Настройка'),
+                onTap: () {
+                  /*
+                  _messengerKey.currentState!.showSnackBar(
+                      const SnackBar(content: Text('Переход в Настройки')));
+                  */
+                },
+              ),
+            ],
+          ),
+        ),
         body: Container(
           width: double.infinity,
          // height: double.infinity,
           child: SingleChildScrollView(
             child: Column(
               children: [
-
-                const SizedBox(
-                  height: 62,
-                ),
-
                 SizedBox(
                   height: 100,
                   child: Image.asset('assets/images/pizza.png'),
                 ),
+                /*
                 const Text('Калькулятор пиццы',
                     style: TextStyle(fontSize: 36, color: Color(0xFF000000))),
+                */
+                const SizedBox(
+                  height: 20,
+                ),
                 const Text('Выберите параметры',
-                    style: TextStyle(fontSize: 16, color: Color(0xFF000000))),
+                    style: TextStyle(fontSize: 24, color: Color(0xFF000000))),
                 const SizedBox(
                   height: 12,
                 ),
@@ -114,8 +200,8 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.only(top: 20, left: 20),
-                  child: const Text('Размер',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
+                  child: Text('Размер', style: styleLabel),
+                   //   style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
                 ),
                 SizedBox(
                     width: 300,
@@ -144,30 +230,36 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.only(top: 10, left: 20),
-                  child: const Text('Соус',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
+                  child: Text('Соус',style: styleLabel),
+                     // style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
                 ),
 
-                RadioListTile<Sauce>(
-                  title: const Text('Острый'),
-                  value: Sauce.hot,
-                  groupValue: _sauce,
-                  onChanged: _onSauceChanged,
-                  //  visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 32),
+                  child: RadioListTile<Sauce>(
+                    title: const Text('Острый'),
+                    value: Sauce.hot,
+                    groupValue: _sauce,
+                    onChanged: _onSauceChanged,
+                  ),
                 ),
-                RadioListTile<Sauce>(
-                  title: const Text('Кисло-сладкий'),
-                  value: Sauce.sweet,
-                  groupValue: _sauce,
-                  onChanged: _onSauceChanged,
-                  //  visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 32),
+                  child: RadioListTile<Sauce>(
+                    title: const Text('Кисло-сладкий'),
+                    value: Sauce.sweet,
+                    groupValue: _sauce,
+                    onChanged: _onSauceChanged,
+                  ),
                 ),
-                RadioListTile<Sauce>(
-                  title: const Text('Сырный'),
-                  value: Sauce.cheese,
-                  groupValue: _sauce,
-                  onChanged: _onSauceChanged,
-                  //  visualDensity: const VisualDensity(horizontal: 0, vertical: -4.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 32),
+                  child: RadioListTile<Sauce>(
+                    title: const Text('Сырный'),
+                    value: Sauce.cheese,
+                    groupValue: _sauce,
+                    onChanged: _onSauceChanged,
+                  ),
                 ),
 
                 // Дополнительный сыр
@@ -212,8 +304,8 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.only(top: 10, left: 20),
-                  child: const Text('Стоимость: ',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
+                  child: Text('Стоимость', style: styleLabel),
+                    //  style: TextStyle(fontSize: 18, color: Color(0xFF000000))),
                 ),
 
                 // Цена в отдельной строке
