@@ -1,4 +1,4 @@
-import 'package:calc_pizza/reg_screen.dart';
+import 'package:calc_pizza/screens/reg_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -13,7 +13,7 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const borderStyle = OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(36)),
-        borderSide: BorderSide(color: const Color(0xFFeceff1), width: 2));
+        borderSide: BorderSide(color: Color(0xFFeceff1), width: 2));
     const linkTextStyle = TextStyle(
       fontSize: 16,
       // fontWeight: FontWeight.bold,
@@ -26,7 +26,7 @@ class AuthScreen extends StatelessWidget {
           body: Container(
         width: double.infinity,
         height: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 38),
+        padding: const EdgeInsets.symmetric(horizontal: 38),
         child: SingleChildScrollView(
           child: Column(
             children: [

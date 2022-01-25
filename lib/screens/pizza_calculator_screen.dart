@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/material/theme_data.dart';
+//import 'package:flutter/src/material/theme_data.dart';
 import 'package:sliding_switch/sliding_switch.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:intl/intl.dart';
@@ -33,15 +33,12 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
       case Sauce.hot:
         _cost += 10;
         break;
-
       case Sauce.sweet:
         _cost += 20;
         break;
-
       case Sauce.cheese:
         _cost += 40;
         break;
-
       default:
         _sauce = Sauce.hot;
     }
@@ -77,7 +74,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                   decoration: const BoxDecoration(
                     color: Colors.blue,
                   ),
-                  child: Container(
+                  child: SizedBox(
                     height: 200,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +143,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
             ],
           ),
         ),
-        body: Container(
+        body: SizedBox(
           width: double.infinity,
          // height: double.infinity,
           child: SingleChildScrollView(
@@ -267,7 +264,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                   width: 300,
                   child: Card(
                     elevation: 0,
-                    color: Color(0xFFF0F0F0),
+                    color: const Color(0xFFF0F0F0),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: Row(
